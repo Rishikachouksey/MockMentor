@@ -4,6 +4,7 @@ import connectDB from "./src/config/db.js";
 import cookieParser from "cookie-parser";
 import cors from "cors"
 import authRouter from "./src/routes/auth.routes.js";
+import userRouter from "./src/routes/user.routes.js";
 
 
 dotenv.config();
@@ -17,6 +18,7 @@ app.use(cors({
 }))
 
 app.use("/api/auth", authRouter)
+app.use("/api/user", userRouter)
 
 const PORT = process.env.PORT || 3000
 
