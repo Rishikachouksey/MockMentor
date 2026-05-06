@@ -19,10 +19,10 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const [showAuth, setShowAuth] = useState(false);
 
-    const handleLogout = async()=>{
+    const handleLogout = async () => {
         try {
             await axios.get(ServerUrl + "/api/auth/logout",
-                {withCredentials:true},
+                { withCredentials: true },
                 dispatch(setUsersData(null)),
                 setShowCreditPopup(false),
                 setShowUserPopup(false),
@@ -47,13 +47,18 @@ const Navbar = () => {
                         <BsRobot size={18} />
                     </div>
 
-                    <h1 className='font-semibold hidden md:block text-lg'>MockMentor</h1>
+                    <h1 className='font-semibold hidden md:block 
+                      text-lg'>MockMentor
+                    </h1>
                 </div>
 
                 <div className='flex items-center gap-6 relative'>
-
                     <div className='relative'>
                         <button onClick={() => {
+                            if (!userData) {
+                                setShowAuth(true)
+                                return;
+                            }
                             setShowCreditPopup(!showCreditPopup);
                             setShowCreditPopup(false)
                         }}
@@ -74,7 +79,12 @@ const Navbar = () => {
                     </div>
 
                     <div className='relative'>
-                        <button onClick={() => {setShowUserPopup(!showUserPopup);
+                        <button onClick={() => {
+                            if (!userData) {
+                                setShowAuth(true)
+                                return;
+                            }
+                            setShowUserPopup(!showUserPopup);
                             setShowCreditPopup(false)
                         }}
                             className='w-9 h-9 bg-black text-white flex items-center justify-center 
@@ -94,7 +104,7 @@ const Navbar = () => {
                                 </button>
 
                                 <button onClick={handleLogout}
-                                 className='w-full text-left text-sm py-2 flex items-center gap-2 text-red-500'>
+                                    className='w-full text-left text-sm py-2 flex items-center gap-2 text-red-500'>
                                     <HiOutlineLogout size={16} />Logout
                                 </button>
                             </div>
@@ -103,7 +113,7 @@ const Navbar = () => {
                 </div>
             </motion.div>
 
-            {showAuth && <AuthModel onClose={()=>setShowAuth()}/>}
+            {showAuth && <AuthModel onClose={() => setShowAuth(false)} />}
 
         </div>
     )
