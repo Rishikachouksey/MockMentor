@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Step2() {
+function Step2({interviewData, onFinish}) {
   return (
     <div>
       
