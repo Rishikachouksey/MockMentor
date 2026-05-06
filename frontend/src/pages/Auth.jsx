@@ -9,7 +9,7 @@ import axios from "axios"
 import { ServerUrl } from '../App';
 
 
-const Auth = () => {
+const Auth = ({isModel = false}) => {
 
 const handleGoogleAuth = async()=>{
   try {
@@ -21,7 +21,7 @@ const handleGoogleAuth = async()=>{
       ServerUrl + "/api/auth/google",
       {name,email}, 
       {withCredentials:true});
-      
+
       console.log(result.data)
     
   } catch (error) {
