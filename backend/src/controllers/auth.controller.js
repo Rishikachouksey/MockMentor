@@ -1,4 +1,3 @@
-
 import User from "../models/user.model.js";
 import genToken from "../config/token.js";
 
