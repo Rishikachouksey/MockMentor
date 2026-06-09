@@ -13,7 +13,7 @@ MockMentor is an AI-driven platform that helps students prepare for interviews b
 - 🔐 Google Authentication (Firebase)
 - 💳 Credit-Based Access System
 - 💰 Razorpay Payment Integration
-- 🎨 Smooth UI with Framer Motion
+- 🎨 Smooth UI with Framer Motion.
 
 ---
 
